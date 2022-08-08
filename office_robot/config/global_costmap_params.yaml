@@ -1,0 +1,20 @@
+# turtlebot3
+global_costmap:
+  global_frame: map
+  robot_base_frame: base_link
+
+  update_frequency: 10.0 # The frequency in Hz for the map to be updated.
+  publish_frequency: 10.0 # The frequency in Hz for the map to publish display information.
+  transform_tolerance: 0.5 # Specifies the delay in transform (tf) data that is tolerable in seconds.
+
+  static_map: true
+
+# # evarobot
+# global_costmap:
+#   global_frame: map
+#   robot_base_frame: base_link
+#   static_map: true
+#   width: 25.0
+#   height: 25.0
+#   inflation_layer:
+#     inflation_radius: 0.1

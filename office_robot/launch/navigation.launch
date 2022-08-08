@@ -1,0 +1,10 @@
+<launch>
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="/home/ubuntu/catkin_ws/src/office_robot/map/map_gmapping.yaml"/>
+
+  <!-- AMCL -->
+  <include file="/home/ubuntu/catkin_ws/src/office_robot/launch/amcl.launch"/>
+
+  <!-- move_base -->
+  <include file="/home/ubuntu/catkin_ws/src/office_robot/launch/move_base.launch"/>
+</launch>

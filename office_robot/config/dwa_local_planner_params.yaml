@@ -1,0 +1,138 @@
+# turtlebot3
+DWAPlannerROS:
+
+# Robot Configuration Parameters
+  max_vel_x: 0.15 # The maximum x velocity for the robot in m/s.
+  min_vel_x: 0 # The minimum x velocity for the robot in m/s.
+
+  max_vel_y: 0.0 # The maximum y velocity for the robot in m/s.
+  min_vel_y: 0.0 # The minimum y velocity for the robot in m/s.
+
+# The velocity when robot is moving in a straight line
+  max_vel_trans:  0.15 # The absolute value of the maximum translational velocity for the robot in m/s.
+  min_vel_trans:  0.75 # The absolute value of the minimum translational velocity for the robot in m/s.
+
+  max_vel_theta: 1 # The absolute value of the maximum rotational velocity for the robot in rad/s.
+  min_vel_theta: -1 # The absolute value of the minimum rotational velocity for the robot in rad/s.
+
+  acc_lim_x: 2.5 # The acceleration limit of the robot in the x direction.
+  acc_lim_y: 0.0 # The acceleration limit of the robot in the y direction.
+  acc_lim_theta: 3.2 # The acceleration limit of the robot in the theta direction.
+
+# Goal Tolerance Parameters
+  xy_goal_tolerance: 0.05 # Within what maximum distance we consider the robot to be in goal.
+  yaw_goal_tolerance: 0.17 # Within what maximum angle difference we consider the robot to face goal direction.
+  latch_xy_goal_tolerance: false
+
+# Forward Simulation Parameters
+  sim_time: 2.0 # The amount of time to roll trajectories out for in seconds.
+  vx_samples: 20 # The number of samples to use when exploring the x velocity space.
+  vy_samples: 0 # The number of samples to use when exploring the y velocity space.
+  vth_samples: 40 # The number of samples to use when exploring the theta velocity space.
+  controller_frequency: 10.0 # The rate in Hz at which to run the control loop and send velocity commands to the base.
+
+# Trajectory Scoring Parameters
+  path_distance_bias: 32.0 # The weight for the path distance part of the cost function.
+  goal_distance_bias: 20.0 # The weight for the goal distance part of the cost function.
+  occdist_scale: 0.02 # The weight for the obstacle distance part of the cost function.
+  forward_point_distance: 0.325 # The distance from the center point of the robot to place an additional scoring point, in meters.
+  stop_time_buffer: 0.2 # The amount of time that the robot must stop before a collision in order for a trajectory to be considered valid in seconds.
+  scaling_speed: 0.25 # The absolute value of the velocity at which to start scaling the robot's footprint, in m/s.
+  max_scaling_factor: 0.2 # The maximum factor to scale the robot's footprint by.
+
+# Oscillation Prevention Parameters
+  oscillation_reset_dist: 0.05 # The distance the robot must travel before oscillation flags are reset, in meters.
+
+# Debugging
+  publish_traj_pc : true # default: false
+  publish_cost_grid_pc: true # default: false
+
+# # evarobot
+# #base_local_planner
+# TrajectoryPlannerROS:
+
+#   holonomic_robot: false
+#   dwa: true
+  
+#   heading_scoring: false
+#   heading_lookahead: 1.0
+
+#   max_vel_x: 0.12    #0.12
+#   min_vel_x: 0.09
+#   max_vel_theta: 0.08
+#   min_in_place_vel_theta: 0.04
+#   escape_vel: -0.09
+
+#   acc_lim_theta: 0.02
+#   acc_lim_x: 0.12
+#   acc_lim_y: 0.12
+
+# #dwa_local_planner
+# DWAPlannerROS:
+
+#   holonomic_robot: false
+#   dwa: true
+
+#   heading_scoring: false
+#   heading_lookahead: 1.0
+
+
+#   acc_lim_x: 0.5
+#   acc_lim_y: 0.0
+#   acc_lim_th: 0.3
+#   max_vel_trans: 0.5
+#   min_vel_trans: 0.1
+#   max_vel_x: 0.5     #0.12 0.3
+#   min_vel_x: -0.5
+#   max_vel_y: 0.0
+#   min_vel_y: 0.0
+#   max_vel_theta: 0.4
+#   min_vel_theta: 0.1
+
+#   yaw_goal_tolerance: 0.15
+#   xy_goal_tolerance: 0.15 #0.10 # 0.50
+#   latch_xy_goal_tolerance: false
+
+#   sim_time: 2.0 #4.0 #2.0
+#   sim_granularity: 0.025  #0.25 #0.025
+#   vx_samples: 5 #20  #3
+#   vy_samples: 0
+#   vth_samples: 10  #40 #5
+#   controller_frequency: 5 #20.0  #5
+
+# # Trajectory Scoring Parameters
+
+# # cost =
+# #  path_distance_bias * (distance to path from the endpoint of the trajectory in meters)
+# #  + goal_distance_bias * (distance to local goal from the endpoint of the trajectory in meters)
+# #  + occdist_scale * (maximum obstacle cost along the trajectory in obstacle cost (0-254))
+
+#   path_distance_bias: 32.0
+# #    The weighting for how much the controller should stay close to the path it was given. default: 32.0
+#   goal_distance_bias: 24.0
+# #    The weighting for how much the controller should attempt to reach its local goal, also controls speed. default: 24.0
+#   occdist_scale: 0.5
+# #    The weighting for how much the controller should attempt to avoid obstacles. default 0.01
+#   forward_point_distance: 0.325
+# #    The weighting for how much the controller should attempt to avoid obstacles. default: 0.325
+#   stop_time_buffer: 1.0
+# #    The amount of time that the robot must stop before a collision in order for a trajectory to be considered valid in seconds. default 0.2
+#   scaling_speed: 0.25
+# #    The absolute value of the velocity at which to start scaling the robot's footprint, in m/s.  default: 0.25
+#   max_scaling_factor: 0.2
+# #    The maximum factor to scale the robot's footprint by. default: 0.2
+
+# # Oscillation Prevention Parameters
+#   oscillation_reset_dist: 0.05
+# #    How far the robot must travel in meters before oscillation flags are reset. default: 0.05
+#   oscillation_reset_angle: 0.1
+
+# # Debugging
+#   publish_cost_grid: true
+# # Whether or not to publish the cost grid that the planner will use when planning. When true, a sensor_msgs/PointCloud2 will be available on the ~<name>/cost_cloud topic. Each point cloud represents the cost grid and has a field for each individual scoring function component as well as the overall cost for each cell, taking the scoring parameters into account.
+#   publish_cost_grid_pc: true
+#   publish_traj_pc: true
+
+#   prune_plan: true
+# # Defines whether or not to eat up the plan as the robot moves along the path. If set to true, points will fall off the end of the plan once the robot moves 1 meter past them.  default: true
+#   global_frame_id : odom
